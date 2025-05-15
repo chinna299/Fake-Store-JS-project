@@ -4,7 +4,10 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+body {
+    background-color: #f0f0f0;
+    color: #333;
+}
 nav h1 {
     font-size: 30px;
     font-weight: 600;
@@ -101,6 +104,9 @@ nav h1 {
     font-family: Verdana;
     font-size: 40px;
     font-weight: lighter;
+    margin-top: 100px;
+    color: #e02d05;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .latestProductsBtnContainer {
@@ -208,6 +214,10 @@ p {
 
 h3 {
     margin-top: 15px;
+}
+h3:hover {
+    color: #e02d05;
+    text-decoration: underline;
 }
 
 .footer {
