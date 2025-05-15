@@ -5,10 +5,12 @@ let productContainer = document.getElementById("product-container");
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cartCount.textContent = cart.length; // Update cart count on page load
 
+        // Fetch data from API
+        // and display products
         async function getData() {
             const res = await fetch('https://fakestoreapi.com/products');
             const data = await res.json();
-            allProducts = [...data]; // Store full list initially
+            allProducts = [...data];
             displayProducts(allProducts);
 
             buttons.forEach(button => {
