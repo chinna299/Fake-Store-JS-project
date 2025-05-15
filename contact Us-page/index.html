@@ -66,20 +66,15 @@
             <p>Made With ❤️ by <span> Chinna</span></p>
         </div>
     </footer>
-  
         <script>
                 function updateCartCount() {
                     let cartCount = document.getElementById("cartCount");
                 let cart = JSON.parse(localStorage.getItem("cart")) || [];
                 cartCount.textContent = cart.length;
     }
-
                 // Call the function when the page loads
                 updateCartCount();
         </script>
-
-    
-
 </body>
 
 </html>
