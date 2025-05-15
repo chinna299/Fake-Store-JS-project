@@ -5,6 +5,8 @@ let allProducts = []; // Store all products for easy filtering
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 cartCount.textContent = cart.length; // Update cart count on page load
 
+// Fetch data from the API and set up event listeners for buttons
+// This function fetches the product data and sets up the event listeners for the buttons
 async function getData() {
     const res = await fetch('https://fakestoreapi.com/products');
     const data = await res.json();
