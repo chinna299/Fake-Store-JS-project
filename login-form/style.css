@@ -4,6 +4,10 @@
     margin: 0;
     box-sizing: border-box;
 }
+body {
+    background-color: #f0f0f0;
+    color: #333;
+}
 
 nav h1 {
     font-size: 30px;
@@ -147,7 +151,7 @@ nav h1 {
 .login-form a:hover {
     color: #0056b3;
 }
-
+/* footer started */
 .footer {
     display: flex;
     justify-content: center;
