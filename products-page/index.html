@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link href="./style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-bar">
+            <h1>Ecommerce</h1>
+            <ul class="nav-links">
+                <a href="/home-page/">
+                    <li>Home</li>
+                </a>
+                <a href="/products-page/">
+                    <li>Products</li>
+                </a>
+                <a href="/About Us-page/">
+                    <li>About</li>
+                </a>
+                <a href="/contact Us-page/">
+                    <li>Contact</li>
+                </a>
+            </ul>
+            <div class="btn-container">
+                <button class="login-btn">
+                    <a href="/login-form/" style="text-decoration: none; color: black;">
+                        <i class="fa-solid fa-right-to-bracket"></i> Login</button>
+                <button class="register-btn">
+                    <a href="/registration form/" style="text-decoration: none; color: black;">
+                        <i class="fa-solid fa-user-plus"></i> Register</button>
+                <button class="cart-button">
+                    <a href="/cartpage/" style="text-decoration: none; color: black;">
+                        <i class="fa-solid fa-cart-shopping"></i> Cart(<span id="cartCount">0</span>)</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <p class="latest-products">Latest Products</p><br><br>
+    <hr>
+    <div class="latestProductsBtnContainer">
+        <button class="productsBtn">ALL</button>
+        <button class="productsBtn">Men's Clothing</button>
+        <button class="productsBtn">Women's Clothing</button>
+        <button class="productsBtn">Jewellery</button>
+        <button class="productsBtn">Electronics</button>
+    </div>
+
+
+    <div id="product-container"></div>
+
+    <footer>
+        <div class="footer">
+            <p>Made With ❤️ by <span> Chinna</span></p>
+        </div>
+    </footer>
+
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

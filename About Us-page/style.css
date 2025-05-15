@@ -1,0 +1,190 @@
+ * {
+     font-family: sans-serif, Arial, Helvetica, sans-serif;
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+ }
+
+ nav h1 {
+     font-size: 30px;
+     font-weight: 600;
+     margin-left: 40px;
+ }
+
+ .nav-bar {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     align-content: center;
+     background-color: #f1f1f1;
+     padding: 10px 20px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     position: fixed;
+     top: 0;
+     width: 100%;
+     z-index: 1000;
+ }
+
+ .nav-links {
+     display: flex;
+     justify-content: space-between;
+ }
+
+ .nav-links a {
+     list-style: none;
+     text-decoration: none;
+     gap: 10px;
+     padding: 10px;
+     color: black;
+     font-size: 20px;
+     font-weight: 400;
+     transition: color 0.25s;
+ }
+
+ .nav-links a:hover {
+     color: grey;
+ }
+
+ .btn-container button {
+     padding: 5px;
+     margin: 5px;
+     border-radius: 5px;
+     cursor: pointer;
+     transition: background-color 0.25s;
+ }
+
+ .btn-container button:hover {
+     background-color: rgb(255, 252, 248);
+ }
+ .about-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 100px;
+        padding: 20px;
+        background-color: #f1f1f1;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;    
+        text-align: center;
+        color: #333;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+ }
+    .about-container h1{
+            font-size: 50px;
+            font-weight: 600;
+            margin-bottom: 20px;
+    }
+    .about-container p{
+            font-size: 20px;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-family: sans-serif;
+            color: #555;
+    }
+    .our-products{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction:row;
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f1f1f1;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        text-align: center;
+        color: #333;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+    }
+  .ourProducts{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+    .our-products .product-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        padding: 20px;
+        /* background-color: #f1f1f1; */
+        /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+        border-radius: 10px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;     
+        margin-bottom: 20px;    
+        text-align: center;
+        color: #333;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+    }
+    .our-products .product-container img{
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+        margin: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.25s;
+    }
+    .our-products .product-container img:hover{
+        transform: scale(1.05);
+    }
+    .footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f1f1f1;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;     
+        margin-bottom: 0;    
+        text-align: center;
+        color: #333;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+    }
+    .footer p{
+        font-size: 20px;
+        font-weight: 400;
+        text-align: center;
+        line-height: 1.5;
+        font-family: sans-serif;
+        color: #000;
+    }
+    .footer span{
+        font-size: 20px;
+        font-weight: 400;
+        text-align: center;
+        font-family: sans-serif;
+        color:orangered;
+        text-decoration: underline wavy;
+    }
+
+    
+
+

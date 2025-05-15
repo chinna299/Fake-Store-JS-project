@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us-page</title>
+    <link href="./style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-bar">
+            <h1>Ecommerce</h1>
+            <ul class="nav-links">
+                <a href="/home-page/">
+                    <li>Home</li>
+                </a>
+                <a href="/products-page/">
+                    <li>Products</li>
+                </a>
+                <a href="/About Us-page/">
+                    <li>About</li>
+                </a>
+                <a href="/contact Us-page/">
+                    <li>Contact</li>
+                </a>
+            </ul>
+            <div class="btn-container">
+                <button class="login-btn">
+                    <a href="/login-form/" style="text-decoration: none; color: black;">
+                        <i class="fa-solid fa-right-to-bracket"></i> Login</button>
+                <button class="register-btn">
+                    <a href="/registration form/" style="text-decoration: none; color: black;">
+                        <i class="fa-solid fa-user-plus"></i> Register</button>
+                <button class="cart-button">
+                    <a href="/cart-page/" style="text-decoration: none; color: black;">
+                        <i class="fa-solid fa-cart-shopping"></i> Cart(<span id="cartCount">0</span>)</a></button>
+            </div>
+        </div>
+    </nav>
+    <div class="about-container">
+        <h1>About Us</h1>
+        <p>Welcome to our e-commerce website! We are dedicated to providing you with the best online shopping experience. Our mission is to offer a wide range of high-quality products at competitive prices, all while ensuring exceptional customer service.</p>
+        <p>Our team is passionate about curating the latest trends and must-have items, so you can find everything you need in one place. Whether you're looking for fashion, electronics, home goods, or more, we've got you covered.</p>
+        <p>Thank you for choosing us as your go-to online store. We look forward to serving you!</p>
+    </div>
+
+    <h1 class="ourProducts">Our Products</h1>
+    <div class="our-products">
+        <div class="product-container"> 
+            <img src="./images/mens.jpg" alt="Mens" class="product-image">
+            <h3>Men's clothing</h3>
+        </div>
+        <div class="product-container">
+            <img src="./images/womens.jpg" alt="Womens" class="product-image">
+            <h3>Women's clothing</h3>
+        </div>
+        <div class="product-container">
+            <img src="./images/jewelery.jpg" alt="jewelery" class="product-image">
+            <h3>Jewelery</h3>
+        </div>
+        <div class="product-container">
+            <img src="./images/electronics.jpg" alt="Electronics" class="product-image">
+            <h3>Electronics</h3>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <p>Made with ❤️ by <span>Chinna</span></p>
+        </div>
+    </footer>
+    <script>
+        function updateCartCount() {
+            let cartCount = document.getElementById("cartCount");
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cartCount.textContent = cart.length;
+        }
+        updateCartCount();
+    </script>
+</body>
+</html>

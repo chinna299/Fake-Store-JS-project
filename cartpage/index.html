@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <style>                                                      
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .backToHome {
+            background-color: rgb(243, 57, 6);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .backToHome:hover {
+            background-color: darkred;
+        }
+        .backToHome a {
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        .cartSection {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 20px;
+            padding: 20px;
+            flex-direction: row;
+        }
+        .cart-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 900px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            border-radius: 5px;
+            margin-right: 20px;
+            transition: transform 0.3s;
+        }
+        .cart-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+        }
+        button {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+
+        .order-summary {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            height: fit-content;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        .order-summary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #emptyCartContainer {
+            display: none;
+            text-align: center;
+            width: 70%;
+            height: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        #emptyCartContainer:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        #emptyCartContainer h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        #emptyCartContainer p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        #emptyCartContainer button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        #emptyCartContainer button:hover {
+            background-color: darkred;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 20px;
+        }   
+        .footer span {
+            color: orangered;
+            font-weight: bold;
+            text-decoration: underline wavy;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>Your Cart (<span id="cartCount">0</span>)</h2>
+        <button class="backToHome"><a href="/home-page/">Back to Home</a></button>
+    </header>
+    <div class="cartSection">
+        <div class="cart-container" id="cartContainer"></div>
+        <div class="order-summary" id="orderSummary"></div>
+    </div>
+    <div id="emptyCartContainer">
+        <h3>Your Cart is Empty</h3>
+        <p>Please add items to your cart.</p>
+        <button onclick="window.location.href='/home-page/'">Continue Shopping</button>
+    </div>
+
+    <footer>
+        <div class="footer">
+        <p>Made with ❤️ by <span>Chinna</span></p>
+        </div>
+    </footer>
+
+    <script>
+        let cartContainer = document.getElementById('cartContainer');
+        let orderSummary = document.getElementById('orderSummary');
+        let cartCount = document.getElementById('cartCount');
+        let emptyCartContainer = document.getElementById('emptyCartContainer');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCart() {
+                cartContainer.innerHTML = "";
+                let subtotal = 0;
+
+                cart.forEach((product, index) => {
+                    let item = document.createElement("div");
+                    item.className = "cart-item";
+                    item.innerHTML = `
+            <img src="${product.image}" alt="${product.title}">
+            <div>
+                <h3>${product.title.slice(0, 26)}...</h3>
+                <p>Price: $${product.price.toFixed(2)}</p>
+            </div>
+            <div>
+                <button onclick="decrementQuantity(${index})">-</button>
+                <span>${product.quantity}</span>
+                <button onclick="incrementQuantity(${index})">+</button>
+            </div>
+            <button onclick="removeItem(${index})">Remove</button>
+        `;
+        
+                    cartContainer.appendChild(item);
+                    subtotal += product.price * product.quantity;
+                });
+
+                cartCount.textContent = cart.length;
+
+                // **Pass subtotal to updateOrderSummary()**
+                updateOrderSummary(subtotal);
+
+                clearCartButton = document.createElement("button"); 
+                clearCartButton.textContent = "Clear Cart";
+                clearCartButton.style.backgroundColor = "red";
+                clearCartButton.style.color = "white";
+                clearCartButton.style.padding = "10px 20px";
+                clearCartButton.style.border = "none";
+                clearCartButton.style.borderRadius = "5px";
+                clearCartButton.style.cursor = "pointer";
+                clearCartButton.style.marginTop = "20px";
+                clearCartButton.onclick = function() {
+                    clearCart();
+                };
+                cartContainer.appendChild(clearCartButton);
+
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+                if (cart.length === 0) {
+                    cartContainer.style.display = "none";
+                    orderSummary.style.display = "none";
+                    emptyCartContainer.style.display = "block";
+                } else {
+                    cartContainer.style.display = "block";
+                    orderSummary.style.display = "block";
+                    emptyCartContainer.style.display = "none";
+                }
+            }
+
+
+        function incrementQuantity(index) {
+            cart[index].quantity += 1;
+            updateCart();
+        }
+
+        function decrementQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+                updateCart();
+            } else {
+                removeItem(index);
+            }
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            cart = [];
+            updateCart();
+        }
+        function updateOrderSummary(subtotal) {
+                orderSummary.innerHTML = `
+        <div style="
+            background-color: #fdfdfd;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+        ">
+            <h2 style="margin-bottom: 10px;">Order Summary</h2>
+            <div style="text-align: left; padding: 10px 15px;">
+                ${cart.map(product => `
+                    <p style="font-size: 16px;">
+                        <strong>${product.title.slice(0, 12)}</strong>  
+                        - ${product.quantity} × $${product.price.toFixed(2)}  
+                        = <span style="color: #007bff;">$${(product.price * product.quantity).toFixed(2)}</span>
+                    </p>
+                `).join("")}
+            </div>
+            <hr>
+            <p style="font-size: 18px; font-weight: bold;">Subtotal: $${subtotal.toFixed(2)}</p>
+            <p>Taxes (10%): $${(subtotal * 0.1).toFixed(2)}</p>
+            <p>Shipping: $5.00</p>
+            <p style="font-size: 20px; font-weight: bold;">Grand Total:  
+                <span style="color: darkred;">$${(subtotal * 1.1 + 5).toFixed(2)}</span>
+            </p>
+            <button class="checkout-btn" onclick="alert('Proceeding to checkout...')">Checkout</button>
+        </div>
+    `;
+            }
+    updateCart();
+        // Initial call to updateOrderSummary with subtotal
+        let initialSubtotal = cart.reduce((acc, product) => acc + (product.price * product.quantity), 0);
+        updateOrderSummary(initialSubtotal);
+        // Update order summary on page load
+updateOrderSummary();
+        
+    </script>
+</body>
+
+</html>
